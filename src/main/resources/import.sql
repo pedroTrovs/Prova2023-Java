@@ -1,0 +1,1 @@
+INSERT INTO TBL_Empresa ( nome, endereco, tel, email) VALUES ('tochas', 'rua 2, 12', '12 2222-1122', 'tochas@2.com');

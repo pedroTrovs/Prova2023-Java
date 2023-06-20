@@ -1,10 +1,12 @@
 package com.fatec.prova2023java.resources;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +25,7 @@ public class EmpresaController {
     private EmpresaService empresaService;
 
     @PostMapping
-    public ResponseEntity<Empresa> saveClasse(@RequestBody Empresa obj){
+    public ResponseEntity<Empresa> saveEmpresa(@RequestBody Empresa obj){
         Empresa resposta = empresaService.save(obj);
 
         URI location = ServletUriComponentsBuilder
@@ -33,6 +35,11 @@ public class EmpresaController {
         .toUri();
         
         return ResponseEntity.created(location).body(resposta);
+    }
+
+    @GetMapping
+    public List<Empresa> getEmpresas(){
+       return empresaService.getAll();
     }
     
 }
